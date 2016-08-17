@@ -1,0 +1,6 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+  id: {{must.id}}
+  content: {{must.content}}
+  <input type="text" class="form-control" id="title" required [(ngModel)]="must.title" name="title">
+  <button type="submit" [disabled]="!form.form.valid">Submit</button>
+</form>

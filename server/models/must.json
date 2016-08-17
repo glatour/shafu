@@ -1,0 +1,25 @@
+{
+  "name": "must",
+  "plural": "musts",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": ""
+    },
+    "content": {
+      "type": "string",
+      "required": true,
+      "default": ""
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
