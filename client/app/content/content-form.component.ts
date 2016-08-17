@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { MustsService } from '../shared/services/musters.service';
 import { Must } from '../shared/models/must';
@@ -9,17 +9,22 @@ import { Must } from '../shared/models/must';
     providers: [ MustsService ]
 })
 export class ContentFormComponent {
-  must:Must = null;
-
+  @Input() must:Must;
+  @Output() onSaved:EventEmitter<Must> = new EventEmitter<Must>();
+  
   constructor(private service:MustsService) {}
 
   onSubmit() {
     this.service
       .save(this.must)
-      .subscribe((must:Must) => this.must = must);
+      .subscribe((must:Must) => {
+        this.must = must;
+        this.onSaved.emit(this.must);
+      });
   }
   
-  ngOnInit(){
-    this.must = new Must('some title', 'some content');
+  ngOnInit() {
+    if(this.must == null)
+      this.must = new Must('', '');
   }
 }

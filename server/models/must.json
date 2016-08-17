@@ -1,7 +1,7 @@
 {
   "name": "must",
   "plural": "musts",
-  "base": "PersistedModel",
+  "base": "",
   "idInjection": true,
   "options": {
     "validateUpsert": true

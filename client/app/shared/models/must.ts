@@ -1,6 +1,6 @@
 export class Must {
   
-  public id: number;
+  public id: string;
 
   constructor (
     public title: string,

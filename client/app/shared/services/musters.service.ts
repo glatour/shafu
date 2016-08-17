@@ -24,7 +24,7 @@ export class MustsService {
       .catch(this.handleError);
   }
 
-  getById(id:number) {
+  getById(id:string) {
     return this.http
       .get('http://localhost:3000/api/musts/' + id)
       .map((res: Response) => {
@@ -39,7 +39,15 @@ export class MustsService {
       headers.append('Content-Type', 'application/json');
 
       return this.http
-        .post('http://localhost:3000/api/musts', JSON.stringify(must), {headers:headers})
+        .post('http://localhost:3000/api/musts', JSON.stringify(must), { headers:headers })
+        .map((res: Response) => Must.fromJson(res.json()))
+        .catch(error => {console.error(error); return error;});
+    } else {
+      var headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+
+      return this.http
+        .put('http://localhost:3000/api/musts/' + must.id, JSON.stringify(must), { headers:headers })
         .map((res: Response) => Must.fromJson(res.json()))
         .catch(error => {console.error(error); return error;});
     }

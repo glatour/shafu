@@ -2,5 +2,15 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "mongolab": {
+    "host": "ds161175.mlab.com",
+    "port": 61175,
+    "url": "",
+    "database": "musts",
+    "password": "CBAbe6<{4BL\\`;tq",
+    "name": "mongolab",
+    "user": "must",
+    "connector": "mongodb"
   }
 }

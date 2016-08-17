@@ -33,7 +33,7 @@
     "public": false
   },
   "must": {
-    "dataSource": "db",
+    "dataSource": "mongolab",
     "public": true,
     "$promise": {},
     "$resolved": true

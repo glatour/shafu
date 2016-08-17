@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 import { MustsService } from '../shared/services/musters.service';
 
@@ -13,18 +13,20 @@ export class Content {
 
   must = {};
   routeParamsSubscription:Subscription;
+  id: Observable<string>;
 
-  constructor(private route: ActivatedRoute, private service:MustsService) { }
+  constructor(private route: ActivatedRoute, private service:MustsService) {
+    this.id = route.params.map(p => p["id"]);
+  }
 
   ngOnInit(){
-    this.routeParamsSubscription = this.route.params.subscribe( params => {
+    this.id.subscribe(id => {
       this.service
-        .getById(+params['id'])
-        .subscribe(data => this.must = data);
+        .getById(id)
+        .subscribe(must => this.must = must);
     });
   }
 
   ngOnDestroy() {
-    this.routeParamsSubscription.unsubscribe();
   }
 }
