@@ -1,5 +1,13 @@
 <form (ngSubmit)="onSubmit()" #form="ngForm">
-  <input type="text" class="form-control" id="title" required [(ngModel)]="must.title" name="title">
-  <input type="text" class="form-control" id="content" required [(ngModel)]="must.content" name="content">
-  <button type="submit" [disabled]="!form.form.valid">Submit</button>
+  <div class="row">
+    <label for="title">title</label>
+    <input type="text" class="form-control" id="title" required [(ngModel)]="must.title" name="title">
+  </div>
+  <div class="row">
+    <label for="content">content</label>
+    <textarea name="content" id="content" cols="30" rows="10" [(ngModel)]="must.content" class="u-full-width"> required</textarea> 
+  </div>
+  <div class="row">
+    <button type="submit" [disabled]="!form.form.valid">Save</button>
+  </div>
 </form>
