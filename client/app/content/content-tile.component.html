@@ -1,0 +1,10 @@
+<div class="header">
+	<div class="header-title">
+		<h5 [routerLink]="['/content', must.id]">{{must.title}}</h5>
+	</div>
+	<div class="header-actions">
+		<a [routerLink]="['/content', must.id, 'edit']">Éditer</a>
+		<a href="#" (click)="delete(must.id)">Supprimer</a>
+	</div>
+</div>
+<p>{{must.content}}</p>

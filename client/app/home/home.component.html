@@ -1,5 +1,3 @@
 <div *ngFor="let must of musts">
-  <h5 [routerLink]="['/content', must.id]">{{must.title}}</h5>
-  <a [routerLink]="['/content', must.id]">edit</a>
-  <p>{{must.content}}</p>
+	<content-tile [must]="must"></content-tile>
 </div>

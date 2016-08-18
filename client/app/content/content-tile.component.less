@@ -1,0 +1,22 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	cursor: default;
+	user-select: none;
+
+	.header {
+		display: flex;
+		flex-direction: row;
+		align-items: baseline;
+
+		&-title {
+			flex: 1 0 auto;
+			align-self: baseline;
+		}
+
+		&-actions {
+			flex: 0 1 auto;
+			align-self: baseline;
+		}
+	}
+}

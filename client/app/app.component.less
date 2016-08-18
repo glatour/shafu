@@ -6,3 +6,19 @@
 	display: block;
 	background: @background-color;
 }
+
+.container {
+	padding: 10px 60px;
+	display: flex;
+	flex-direction: column;
+
+	&-links {
+		flex: 0 1 auto;
+
+		text-align: right;
+	}
+
+	&-content {
+		flex: 1 1 auto;
+	}
+}

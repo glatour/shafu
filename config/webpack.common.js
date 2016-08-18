@@ -3,6 +3,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var LoopbackBootPlugin = require('loopback-webpack-plugin');
 var helpers = require('./helpers');
+var precss = require('precss');
+var autoprefixer = require('autoprefixer');
 
 module.exports = {
 	entry: {
@@ -28,12 +30,16 @@ module.exports = {
 		}, {
 			test: /\.less$/,
 			exclude: /node_modules/,
-			loader: 'raw!less-loader'
+			loader: 'raw!postcss-loader!less-loader'
 		}, {
 			test: /\.css$/,
 			include: helpers.root('src', 'app'),
 			loader: 'raw'
 		}]
+	},
+
+	postcss: function () {
+		return [precss, autoprefixer];
 	},
 
 	plugins: [

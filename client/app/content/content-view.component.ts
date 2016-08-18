@@ -6,10 +6,10 @@ import { MustsService } from '../shared/services/musters.service';
 
 @Component({
   selector: 'content',
-  templateUrl: 'content.component.html',
+  templateUrl: 'content-view.component.html',
   providers: [ MustsService ]
 })
-export class Content {
+export class ContentView {
 
   must = {};
   routeParamsSubscription:Subscription;

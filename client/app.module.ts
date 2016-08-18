@@ -10,7 +10,7 @@ import { routes } from './app/router';
 import { AppComponent } from './app/app.component';
 import { Home } from './app/home/home.component';
 import { Header } from './app/shared/header/header.component';
-import { Content } from './app/content/content.component';
+import { ContentView } from './app/content/content-view.component';
 import { ContentCreateComponent } from './app/content/content-create.component';
 import { ContentEditComponent } from './app/content/content-edit.component';
 import { ContentFormComponent } from './app/content/content-form.component';
@@ -26,7 +26,7 @@ if (process.env.ENV === 'production')
     FormsModule,
     RouterModule.forRoot(routes, { useHash: true })
   ],
-  declarations: [  AppComponent, Home, Header, Content, ContentCreateComponent, ContentEditComponent, ContentFormComponent ],
+  declarations: [  AppComponent, Home, Header, ContentView, ContentCreateComponent, ContentEditComponent, ContentFormComponent ],
   bootstrap: [ AppComponent ],
   providers: [ MustsService ]
 })

@@ -1,12 +1,14 @@
 import { Component, Output } from '@angular/core';
 
+import { ContentTileComponent } from '../content/content-tile.component';
 import { MustsService } from '../shared/services/musters.service';
 
 @Component( {
   selector: 'home',
   templateUrl: 'home.component.html',
   providers: [ MustsService ],
-  styles: [ "h5 {display: inline; }" ]
+  styles: [ "h5 {display: inline; }" ],
+  directives: [ ContentTileComponent ]
 })
 export class Home {
   error = "";
@@ -15,6 +17,10 @@ export class Home {
   constructor( private service: MustsService ) { }
 
   ngOnInit() {
+    this.getMusts();
+  }
+
+  private getMusts() {
     this.service
       .get()
       .subscribe(
@@ -23,5 +29,14 @@ export class Home {
       },
       error => this.error = error
       );
+  }
+
+  delete( id: string ) {
+    this.service
+      .delete( id )
+      .subscribe( data => {
+        this.getMusts();
+      }, error => this.error = error );
+    return false;
   }
 }
