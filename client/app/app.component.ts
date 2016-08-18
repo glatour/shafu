@@ -5,7 +5,9 @@ import { Header } from './shared/header/header.component';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styles: ['./app.component.css'],
+  //styles: [':host {display: block; background: #000;}'],
+  //styles: [':host { display: block; background: #000; }'],
+  styles: [ require('./app.component.less') ],
   directives:[ Header ]
 })
 export class AppComponent { }
