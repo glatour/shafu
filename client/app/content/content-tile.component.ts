@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Must } from '../../app/shared/models/must';
+import { MustsService } from '../../app/shared/services/musters.service';
 
 @Component( {
 	selector: 'content-tile',
@@ -9,9 +10,20 @@ import { Must } from '../../app/shared/models/must';
 })
 export class ContentTileComponent {
 	@Input() must: Must;
+	@Output() onDelete = new EventEmitter();
 
-	constructor() { }
+	constructor( private service: MustsService ) { }
 
 	ngOnInit() { }
 
+  delete( id: string ) {
+    if ( confirm( 'really delete?' ) ) {
+      this.service
+        .delete( id )
+        .subscribe( data => {
+					this.onDelete.emit();
+        }, error => console.log( error ) );
+    }
+    return false;
+  }
 }

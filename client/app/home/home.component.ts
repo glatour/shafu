@@ -20,6 +20,10 @@ export class Home {
     this.getMusts();
   }
 
+  onDelete() {
+    this.getMusts();
+  }
+
   private getMusts() {
     this.service
       .get()
@@ -29,14 +33,5 @@ export class Home {
       },
       error => this.error = error
       );
-  }
-
-  delete( id: string ) {
-    this.service
-      .delete( id )
-      .subscribe( data => {
-        this.getMusts();
-      }, error => this.error = error );
-    return false;
   }
 }
