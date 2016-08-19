@@ -1,8 +1,21 @@
-<h2>{{must.title}}</h2>
-<p>{{must.content}}</p>
-<p><a [routerLink]="['/content', must.id, 'edit']">Edit</a></p>
+<!--
+	<h2>{{must.title}}</h2>
+	<div [innerHTML]="must.content"></div>
+	<p><a [routerLink]="['/content', must.id, 'edit']">Edit</a></p>
 
+	[formGroup]="myForm"
+-->
 
-<div #mustContent id="mustContent">
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque fugiat totam non? Enim magni vero commodi libero, quos nemo exercitationem a inventore est, reiciendis eius nam veniam eveniet perspiciatis optio.
-</div>
+<form (ngSubmit)="onSubmit()" #form="ngForm">
+
+	<h2>
+		<input type="hidden" [(ngModel)]="must.title" name="title">
+		<medium-editor #titleEditor [model]="must.title" [enableToolbar]="false" (onChanged)="onTitleChanged($event)"></medium-editor>
+	</h2>
+
+	<input type="hidden" [(ngModel)]="must.content" name="content">
+	<medium-editor [model]="must.content" (onChanged)="onContentChanged($event)"></medium-editor>
+
+	<button type="submit" [disabled]="!form.form.valid" [hidden]="!form.form.dirty">Save</button>
+
+</form>

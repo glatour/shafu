@@ -1,12 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 
+import { Must } from './../shared/models/must';
 import { MustsService } from '../shared/services/musters.service';
 
 declare var MediumEditor: any;
-//console.log(MediumEditor);
-
 
 @Component( {
   selector: 'content',
@@ -15,18 +14,40 @@ declare var MediumEditor: any;
 })
 export class ContentView {
 
-  must = {};
+  must: Must = new Must();
   routeParamsSubscription: Subscription;
   id: Observable<string>;
-  @ViewChild( 'mustContent' ) mustContent;
+  @ViewChild( 'titleEditor' ) titleEditor;
+  @ViewChild( 'form' ) form;
 
-  constructor( private route: ActivatedRoute, private service: MustsService ) {
+  constructor( private route: ActivatedRoute, private router: Router, private service: MustsService ) {
     this.id = route.params.map( p => p[ "id" ] );
   }
 
   ngOnDestroy() {
-    //var MediumEditor: any;
-    //console.log( MediumEditor );
+  }
+
+  ngOnChange() {
+    console.log( 'change!' );
+  }
+
+  onTitleChanged( $event ) {
+    this.must.title = $event.replace( /<[^>]*>/g, "" );
+    this.form.controls.title.markAsDirty();
+  }
+
+  onContentChanged( $event ) {
+    this.must.content = $event;
+    this.form.controls.content.markAsDirty();
+  }
+
+  onSubmit() {
+    this.service
+      .save( this.must )
+      .subscribe(( must: Must ) => {
+        this.must = must;
+        this.router.navigate( [ '/' ] );
+      });
   }
 
   ngOnInit() {
@@ -35,11 +56,6 @@ export class ContentView {
         .getById( id )
         .subscribe( must => {
           this.must = must;
-          var editor = new MediumEditor( '#' + this.mustContent.nativeElement.id, {
-            toolbar: true
-          });
-          editor.subscribe( 'editableInput', function ( event, editable ) {
-          });
         });
     });
   }

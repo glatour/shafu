@@ -16,6 +16,8 @@ import { ContentEditComponent } from './app/content/content-edit.component';
 import { ContentFormComponent } from './app/content/content-form.component';
 import { MustsService } from './app/shared/services/musters.service';
 
+import { MediumEditorComponent } from './app/shared/medium-editor/medium-editor.component'
+
 if (process.env.ENV === 'production') 
   enableProdMode();
 
@@ -26,7 +28,7 @@ if (process.env.ENV === 'production')
     FormsModule,
     RouterModule.forRoot(routes, { useHash: true })
   ],
-  declarations: [  AppComponent, Home, Header, ContentView, ContentCreateComponent, ContentEditComponent, ContentFormComponent ],
+  declarations: [  MediumEditorComponent, AppComponent, Home, Header, ContentView, ContentCreateComponent, ContentEditComponent, ContentFormComponent ],
   bootstrap: [ AppComponent ],
   providers: [ MustsService ]
 })
