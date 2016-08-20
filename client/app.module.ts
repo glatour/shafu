@@ -15,7 +15,7 @@ import { ContentCreateComponent } from './app/content/content-create.component';
 import { ContentEditComponent } from './app/content/content-edit.component';
 import { ContentFormComponent } from './app/content/content-form.component';
 import { MustsService } from './app/shared/services/musters.service';
-
+import { FiltersComponent } from './app/shared/components/filters/filters.component';
 import { MediumEditorComponent } from './app/shared/components/medium-editor/medium-editor.component';
 import { MomentCalendarPipe, MomentFromNowPipe } from './app/shared/pipes/moment/moment.pipe';
 
@@ -36,6 +36,7 @@ if ( process.env.ENV === 'production' )
     AppComponent,
     Home,
     Header,
+    FiltersComponent,
     ContentView,
     ContentCreateComponent,
     ContentEditComponent,

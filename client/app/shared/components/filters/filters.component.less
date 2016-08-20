@@ -1,0 +1,48 @@
+@import './../../theme/_config.less';
+
+:host {
+	display: flex;
+	flex-direction: row;
+	padding: 20px 20px;
+
+	height: 80px;
+	//background: darken(@color-1, 5%);
+}
+
+.toolbar {
+	flex: 1 0 auto;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	&-icon {
+		line-height: 1rem;
+		svg {
+			fill: #ddd;
+			//height: 40px;
+		}
+	}
+
+	&-items {
+		flex: 1 0 auto;
+	}
+}
+
+.search {
+	display: flex;
+	flex-direction: row;
+	flex: 1 0 auto;
+
+	&-icon {
+		flex: 0 1 30px;
+		padding: 0px 8px;
+
+		svg {
+			fill: fadeOut(@color-1, 30%);
+		}
+	}
+	&-field {
+		flex: 1 0 auto;
+	}
+}
