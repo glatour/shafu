@@ -16,16 +16,17 @@ export class MediumEditorComponent {
 	constructor() { }
 
 	ngOnInit() {
-		console.log(this.enableToolbar);
 		var editor = new MediumEditor( this.editorContent.nativeElement, {
 			toolbar: this.enableToolbar,
 			spellcheck: false,
+			placeholder: {
+        text: '',
+			}
 		});
 
 		var self = this;
-		editor.subscribe( 'editableInput', function ( event, editable ) {
-			if ( editable )
-				self.onChanged.emit( editable.innerHTML );
+		editor.subscribe( 'blur', function ( event, editable ) {
+			self.onChanged.emit( editable.innerHTML );
 		});
 	}
 

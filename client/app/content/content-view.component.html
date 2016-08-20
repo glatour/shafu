@@ -13,6 +13,10 @@
 		<medium-editor #titleEditor [model]="must.title" [enableToolbar]="false" (onChanged)="onTitleChanged($event)"></medium-editor>
 	</h2>
 
+	<div>
+		Créé {{must.creationDate | momentcalendar}} <span [hidden]="!must.modificationDate">mais modifié il y a {{must.modificationDate | momentfromnow}}</span>
+	</div>
+
 	<input type="hidden" [(ngModel)]="must.content" name="content">
 	<medium-editor [model]="must.content" (onChanged)="onContentChanged($event)"></medium-editor>
 

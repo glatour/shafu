@@ -16,6 +16,13 @@
       "type": "string",
       "required": true,
       "default": ""
+    },
+    "creationDate": {
+      "type": "date",
+      "required": true
+    },
+    "modificationDate": {
+      "type": "string"
     }
   },
   "validations": [],

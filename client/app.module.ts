@@ -9,26 +9,38 @@ import { routes } from './app/router';
 
 import { AppComponent } from './app/app.component';
 import { Home } from './app/home/home.component';
-import { Header } from './app/shared/header/header.component';
+import { Header } from './app/shared/components/header/header.component';
 import { ContentView } from './app/content/content-view.component';
 import { ContentCreateComponent } from './app/content/content-create.component';
 import { ContentEditComponent } from './app/content/content-edit.component';
 import { ContentFormComponent } from './app/content/content-form.component';
 import { MustsService } from './app/shared/services/musters.service';
 
-import { MediumEditorComponent } from './app/shared/medium-editor/medium-editor.component'
+import { MediumEditorComponent } from './app/shared/components/medium-editor/medium-editor.component';
+import { MomentCalendarPipe, MomentFromNowPipe } from './app/shared/pipes/moment/moment.pipe';
 
-if (process.env.ENV === 'production') 
+if ( process.env.ENV === 'production' )
   enableProdMode();
 
-@NgModule({
+@NgModule( {
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    RouterModule.forRoot(routes, { useHash: true })
+    RouterModule.forRoot( routes, { useHash: true })
   ],
-  declarations: [  MediumEditorComponent, AppComponent, Home, Header, ContentView, ContentCreateComponent, ContentEditComponent, ContentFormComponent ],
+  declarations: [
+    MediumEditorComponent,
+    MomentCalendarPipe,
+    MomentFromNowPipe,
+    AppComponent,
+    Home,
+    Header,
+    ContentView,
+    ContentCreateComponent,
+    ContentEditComponent,
+    ContentFormComponent
+  ],
   bootstrap: [ AppComponent ],
   providers: [ MustsService ]
 })

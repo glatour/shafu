@@ -35,6 +35,8 @@ export class MustsService {
       var headers = new Headers();
       headers.append( 'Content-Type', 'application/json' );
 
+      must.creationDate = new Date();
+
       return this.http
         .post( 'http://localhost:3000/api/musts', JSON.stringify( must ), { headers: headers })
         .map(( res: Response ) => Must.fromJson( res.json() ) )
@@ -42,6 +44,8 @@ export class MustsService {
     } else {
       var headers = new Headers();
       headers.append( 'Content-Type', 'application/json' );
+      
+      must.modificationDate = new Date();
 
       return this.http
         .put( 'http://localhost:3000/api/musts/' + must.id, JSON.stringify( must ), { headers: headers })

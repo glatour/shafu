@@ -28,7 +28,6 @@ export class ContentView {
   }
 
   ngOnChange() {
-    console.log( 'change!' );
   }
 
   onTitleChanged( $event ) {
