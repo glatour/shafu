@@ -4,6 +4,7 @@ import { BrowserModule }  from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { Routes, RouterModule }   from '@angular/router';
+import { NgRedux } from 'ng2-redux';
 
 import { routes } from './app/router';
 
@@ -43,6 +44,9 @@ if ( process.env.ENV === 'production' )
     ContentFormComponent
   ],
   bootstrap: [ AppComponent ],
-  providers: [ MustsService ]
+  providers: [
+    MustsService,
+    NgRedux
+  ]
 })
 export class AppModule { }

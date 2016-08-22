@@ -1,12 +1,16 @@
 import { Component, Output } from '@angular/core';
+import { Observable } from 'rxjs';
+import { NgRedux, select } from 'ng2-redux';
 
 import { ContentTileComponent } from '../content/content-tile.component';
 import { MustsService } from '../shared/services/musters.service';
+import { Must } from './../shared/models/must';
+import { IAppState,  MustsActions } from './../reducers';
 
 @Component( {
   selector: 'home',
   templateUrl: 'home.component.html',
-  providers: [ MustsService ],
+  providers: [ MustsService, MustsActions ],
   styles: [ "h5 {display: inline; }" ],
   directives: [ ContentTileComponent ]
 })
@@ -14,10 +18,18 @@ export class Home {
   error = "";
   musts = [];
 
-  constructor( private service: MustsService ) { }
+  @select() musts$: Observable<Must[]>;
+
+  constructor( private ngRedux: NgRedux<IAppState>, private service: MustsService, private mustActions:MustsActions) { 
+  }
 
   ngOnInit() {
+    this.mustActions.fetchPosts();
+    //this.ngRedux.dispatch(this.mustActions.fetchPosts());
+    //this.ngRedux.dispatch({type: 'RETRIEVE_MUSTS'});
     this.getMusts();
+
+    console.log(this.musts$)
   }
 
   onDelete() {
