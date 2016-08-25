@@ -1,3 +1,5 @@
+{{counter | async}}
 <div *ngFor="let must of musts">
 	<content-tile [must]="must" (onDelete)="onDelete(must.id)"></content-tile>
 </div>
+<ngrx-store-log-monitor toggleCommand="ctrl-h" positionCommand="ctrl-m"></ngrx-store-log-monitor>
